@@ -1,24 +1,67 @@
 ﻿<Window x:Class="WBF_mozifoglalas.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WBF_mozifoglalas"
-        mc:Ignorable="d"
-        Title="Mozijgy foglalás" Height="450" Width="800">
-    <Grid>
+        Title="Mozijegy foglalás" Height="450" Width="800">
+
+    <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="18*"/>
-            <RowDefinition Height="132*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="47*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="3" Margin="0,5,0,0"/>
-        <Label Content="Mozijegy foglaló rendszer" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Width="254" />
-        <DataGrid x:Name="DataGrid" Margin="0,36,0,0" SelectionChanged="DataGrid_SelectionChanged" Grid.RowSpan="2"/>
-        <Button Content="Adatok betöltése" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Center" Click="adatokbetoltese" Height="20" Width="94"/>
-        <Button Content="Foglalás" HorizontalAlignment="Left" Margin="120,0,0,0" Grid.Row="2" VerticalAlignment="Center" Click="foglalas" Height="20" Width="47"/>
-        <Button Content="Csak ahol van hely" HorizontalAlignment="Left" Margin="180,0,0,0" Grid.Row="2" VerticalAlignment="Center" Click="vanehely"/>
+
+        <Label Content="Mozi jegyfoglaló rendszer"
+               FontSize="22"
+               FontWeight="Bold"
+               HorizontalAlignment="Center"/>
+
+        <DataGrid x:Name="DataGrid"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  Margin="0,10">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Film címe" Binding="{Binding cim}" Width="*"/>
+                <DataGridTextColumn Header="Időpont" Binding="{Binding idopont}" Width="150"/>
+                <DataGridTextColumn Header="Terem" Binding="{Binding terem}" Width="120"/>
+                <DataGridTextColumn Header="Szabad helyek" Binding="{Binding szabadhelyek}" Width="120"/>
+                <DataGridCheckBoxColumn Header="3D" Binding="{Binding _3D}" Width="60"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <WrapPanel Grid.Row="2" Margin="0,5">
+            <Button Content="Adatok betöltése" Click="adatokbetoltese" Margin="5"/>
+            <Button Content="Foglalás" Click="foglalas" Margin="5"/>
+            <Button Content="Csak ahol van hely" Click="csakVanHely" Margin="5"/>
+            <Button Content="Csak 3D" Click="csak3D" Margin="5"/>
+            <Button Content="Legnépszerűbb" Click="legnepszerubb" Margin="5"/>
+            <Button Content="Átlag szabad hely" Click="atlagSzabadHely" Margin="5"/>
+        </WrapPanel>
+
+        <GroupBox Header="Új előadás hozzáadása" Grid.Row="2" Margin="0,45,0,0">
+            <Grid Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="Film címe"/>
+                    <TextBox x:Name="txtCim"/>
+                    <TextBlock Text="Terem"/>
+                    <TextBox x:Name="txtTerem"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Időpont (pl: 2025.12.15 18:00)"/>
+                    <TextBox x:Name="txtIdopont"/>
+                    <TextBlock Text="Szabad helyek"/>
+                    <TextBox x:Name="txtSzabad"/>
+                    <CheckBox x:Name="chk3D" Content="3D-s vetítés"/>
+                    <Button Content="Hozzáadás" Click="hozzaadas" Margin="0,5,0,0"/>
+                </StackPanel>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>
