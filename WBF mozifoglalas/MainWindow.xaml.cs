@@ -54,6 +54,7 @@ namespace WBF_mozifoglalas
 
         private void foglalas(object sender, RoutedEventArgs e)
         {
+
             if (DataGrid.SelectedItem is mozi)
             {
                 ((mozi)DataGrid.SelectedItem).szabadhelyek 
