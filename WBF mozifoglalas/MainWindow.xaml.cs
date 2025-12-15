@@ -8,7 +8,7 @@ namespace WBF_mozifoglalas
 {
     public partial class MainWindow : Window
     {
-        // 🔹 Adatmodell
+        
         public class Mozi : INotifyPropertyChanged
         {
             private int _szabadhelyek;
