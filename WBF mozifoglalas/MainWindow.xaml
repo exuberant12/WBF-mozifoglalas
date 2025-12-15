@@ -19,5 +19,6 @@
         <DataGrid x:Name="DataGrid" Margin="0,36,0,0" SelectionChanged="DataGrid_SelectionChanged" Grid.RowSpan="2"/>
         <Button Content="Adatok betöltése" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="2" VerticalAlignment="Center" Click="adatokbetoltese" Height="20" Width="94"/>
         <Button Content="Foglalás" HorizontalAlignment="Left" Margin="120,0,0,0" Grid.Row="2" VerticalAlignment="Center" Click="foglalas" Height="20" Width="47"/>
+        <Button Content="Csak ahol van hely" HorizontalAlignment="Left" Margin="180,0,0,0" Grid.Row="2" VerticalAlignment="Center" Click="vanehely"/>
     </Grid>
 </Window>

@@ -61,15 +61,19 @@ namespace WBF_mozifoglalas
                     = ((mozi)DataGrid.SelectedItem).szabadhelyek - 1;
                 DataGrid.Items.Refresh();
             }
-            if (szabadhelyek in mozi is null)
-            
-
-
         }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void vanehely(object sender, RoutedEventArgs e)
         {
-
+            List<mozi> vanhely = new List<mozi>();
+            foreach ( var mozi in mozifilmek )
+            {
+                if ( mozi.szabadhelyek > 0 )
+                {
+                    vanhely.Add(mozi);
+                }
+            }
+            DataGrid.ItemsSource = vanhely;
+            DataGrid.Items.Refresh();
         }
     }
 }
