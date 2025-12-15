@@ -42,7 +42,7 @@ namespace WBF_mozifoglalas
             public event PropertyChangedEventHandler PropertyChanged;
         }
 
-        // 🔹 Lista
+        
         ObservableCollection<Mozi> mozifilmek;
 
         public MainWindow()
